@@ -39,3 +39,17 @@
     border: 1px solid #ccc;
     background: #fff;
 }
+.wrapper{
+    width: 1000px;
+    margin: 0 auto;
+}
+.paramsChange{
+    margin: 10px;
+}
+input{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: right;
+    width: 25px;
+}

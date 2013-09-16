@@ -29,19 +29,13 @@
             return this.each(function(){
                 var $this = $(this),
                     settings = $this.data('settings');
-                console.log($this)
-                console.log(params);
-
-                console.log(settings);
                 $.extend(settings, params);
                 $this.data('settings', settings);
-                $this.off('.tableRowset');
+                methods.destroy.call($this);
                 methods.setEvents.call($this, settings);
-                console.log($this.data('settings'));
             })
         },
         makeTable: function(cols, rows){
-            console.log('making table');
             var newTable = '<div class="tableRowSetContainer">' +
                 '<table class="growing">';
             for (var cnt = 0; cnt <  rows ; cnt++){
@@ -74,7 +68,9 @@
         },
         paintRow: function(rowIndex, colIndex){
             var settings = this.data('settings');
-            this.find('tr').each(function(rowIdx, row){
+            this
+                .find('tr')
+                .each(function(rowIdx, row){
                 var $row = $(row),
                     $rowCells = $row.find('td');
                 if (rowIdx <= rowIndex ){
@@ -152,8 +148,13 @@
                     })
             }
         },
+        removePainting: function(){
+            this
+                .find('.cyanRow').removeClass('cyanRow').end()
+                .find('.cyan').removeClass('cyan')
+
+        },
         setEvents: function(){
-            //            $('body')
             var settings = this.data('settings'),
                 self = this,
                 $table = self.hasClass('growing') ? self : self.find('.growing');
@@ -207,11 +208,18 @@
                     self.find('.tableRowSetContainer').hide(100);
                     var result = {cols: settings.colCount, rows: settings.rowCount};
                     settings.onSet(result);
+                    methods.cleanUp.call(self, 0, 0);
+                    methods.removePainting.call(self);
                     return result;
                 });
 
+        },
+        destroy: function(){
+            $(this).off('.tableRowset');
+            $('html').off('.tableRowset');
         }
     }
+
     $.fn.tableRowSet = function(method) {
         if ( methods[method] ) {
             return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ));

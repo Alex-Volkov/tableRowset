@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="styles.css"/>
     <script type="text/javascript">
         $(function(){
-            var
+            var $btn = $('.btn'),
                     $tabSelect = $('.tabSelect');
-            $('.btn').tableRowSet({
+            $btn.tableRowSet({
                 onSet: function(results){
-                    $('.results').text('Rows set:' + results.rows + ' Columns set:' + results.cols);
+                    $('.results').text('Rows set: ' + results.rows + ' Columns set: ' + results.cols);
                     console.log(results);
                 }
             });
@@ -20,31 +20,31 @@
                 .on('keyup', '#maxColCount', function(){
                         var maxCols = $(this).val();
                         if ($.isNumeric(maxCols)){
-                            $tabSelect.tableRowSet('changeSettings', {maxCols: maxCols})
+                            $btn.tableRowSet('changeSettings', {maxCols: maxCols})
                         }
-                    console.log('changed', 'col count');
                 })
                 .on('keyup', '#maxRowCount', function(){
                     var maxRows = $(this).val();
-                        console.log(maxRows);
                     if ($.isNumeric(maxRows)){
-                        $tabSelect.tableRowSet('changeSettings', {maxRows: maxRows})
+                        $btn.tableRowSet('changeSettings', {maxRows: maxRows})
                     }
-                    console.log('changed', 'col count');
                 })
         })
     </script>
 </head>
 <body>
-<a href="#" class="btn">Toggle control</a>
-<div>
-    <label for="maxColCount">max column count</label>
-    <input type="text" value="7" id="maxColCount"/>
+<div class="wrapper">
+    <a href="#" class="btn">Toggle control</a>
+    <p>default maxCols and maxRows number is set to 10</p>
+    <div class="paramsChange">
+        <label for="maxColCount">max column count</label>
+        <input type="text" value="10" id="maxColCount"/>
+    </div>
+    <div class="paramsChange">
+        <label for="maxRowCount">max rows count</label>
+        <input type="text" value="10" id="maxRowCount"/>
+    </div>
+    <span class="results"></span>
 </div>
-<div>
-    <label for="maxRowCount">max rows count</label>
-    <input type="text" value="7" id="maxRowCount"/>
-</div>
-<span class="results"></span>
 </body>
 </html>

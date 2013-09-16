@@ -1,7 +1,7 @@
 tableRowset
 ===========
 
-JQuery plugin for setting table row and column number, like in google docs
+JQuery plugin for setting table row and column number, self expanding, like in google docs
 
 version 0.1
 
@@ -20,7 +20,7 @@ defaultRows - default width of table in cells
 
 Callbacks
 ===========
-onSet - receive an object of cols and rows
+onSet - callback receive an object of cols and rows
 
 
 Methods
