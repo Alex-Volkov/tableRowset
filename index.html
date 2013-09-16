@@ -8,20 +8,21 @@
     <link rel="stylesheet" href="styles.css"/>
     <script type="text/javascript">
         $(function(){
-            var $btn = $('.btn'),
-                    $tabSelect = $('.tabSelect');
+            var $btn = $('.btn');
             $btn.tableRowSet({
                 onSet: function(results){
-                    $('.results').text('Rows set: ' + results.rows + ' Columns set: ' + results.cols);
+                    $('.results')
+                        .text('Rows set: ' + results.rows + ' Columns set: ' + results.cols)
+                        .show();
                     console.log(results);
                 }
             });
             $('body')
                 .on('keyup', '#maxColCount', function(){
-                        var maxCols = $(this).val();
-                        if ($.isNumeric(maxCols)){
-                            $btn.tableRowSet('changeSettings', {maxCols: maxCols})
-                        }
+                    var maxCols = $(this).val();
+                    if ($.isNumeric(maxCols)){
+                        $btn.tableRowSet('changeSettings', {maxCols: maxCols})
+                    }
                 })
                 .on('keyup', '#maxRowCount', function(){
                     var maxRows = $(this).val();

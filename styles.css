@@ -53,3 +53,9 @@ input{
     text-align: right;
     width: 25px;
 }
+.results{
+    display: none;
+    border: 2px dotted red;
+    padding: 5px;
+    border-radius: 5px;
+}
