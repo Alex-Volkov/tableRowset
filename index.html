@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>table rowSet jquery plugin</title>
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="tableRowset.js"></script>
+    <link rel="stylesheet" href="styles.css"/>
+    <script type="text/javascript">
+        $(function(){
+            var
+                    $tabSelect = $('.tabSelect');
+            $('.btn').tableRowSet({
+                onSet: function(results){
+                    $('.results').text('Rows set:' + results.rows + ' Columns set:' + results.cols);
+                    console.log(results);
+                }
+            });
+            $('body')
+                .on('keyup', '#maxColCount', function(){
+                        var maxCols = $(this).val();
+                        if ($.isNumeric(maxCols)){
+                            $tabSelect.tableRowSet('changeSettings', {maxCols: maxCols})
+                        }
+                    console.log('changed', 'col count');
+                })
+                .on('keyup', '#maxRowCount', function(){
+                    var maxRows = $(this).val();
+                        console.log(maxRows);
+                    if ($.isNumeric(maxRows)){
+                        $tabSelect.tableRowSet('changeSettings', {maxRows: maxRows})
+                    }
+                    console.log('changed', 'col count');
+                })
+        })
+    </script>
+</head>
+<body>
+<a href="#" class="btn">Toggle control</a>
+<div>
+    <label for="maxColCount">max column count</label>
+    <input type="text" value="7" id="maxColCount"/>
+</div>
+<div>
+    <label for="maxRowCount">max rows count</label>
+    <input type="text" value="7" id="maxRowCount"/>
+</div>
+<span class="results"></span>
+</body>
+</html>

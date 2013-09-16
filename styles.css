@@ -1,0 +1,41 @@
+.growing{
+    margin: 20px;
+}
+.growing td{
+    border: 2px solid #ccc;
+    padding: 10px;
+}
+.growing .cyan{
+    background-color: #d3e4ff;
+}
+.growing .colCount, .rowCount{
+    padding: 9px;
+}
+.tabSelect{
+    position: absolute;
+    box-shadow: 5px 3px 3px #ccc;
+    border: 1px solid #eee;
+    background: #fff;
+    z-index: 2;
+    /*display: none;*/
+}
+.tableRowSetContainer .counters{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.btn{
+    padding: 10px;
+    /*background: #bebbff;*/
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    box-shadow: 2px 2px 0 0 #ccc;
+    color: #000;
+}
+.tableRowSetContainer{
+    position: absolute;
+    display: none;
+    border: 1px solid #ccc;
+    background: #fff;
+}
